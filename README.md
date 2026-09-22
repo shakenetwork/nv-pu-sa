@@ -1,6 +1,6 @@
 # 女菩萨 · X 博主精选画廊
 
-这是一个面向公开信息的 **X（Twitter）关注列表精选画廊与博主备份存档**。项目内容来自线上站点 [nv-pu-sa.pages.dev](https://nv-pu-sa.pages.dev/、https://github.com/ethanaicode/nv-pu-sa)，用于保存和整理接口返回的公开资料，方便进行离线备份、数据核对与静态展示。
+这是一个面向公开信息的 **X（Twitter）关注列表精选画廊与博主备份存档**。项目内容来自线上站点 [nv-pu-sa.pages.dev](https://nv-pu-sa.pages.dev/)、[ethanaicode/nv-pu-sa](https://github.com/ethanaicode/nv-pu-sa)，用于保存和整理接口返回的公开资料，方便进行离线备份、数据核对与静态展示。
 
 > **重要说明**：本项目仅作资料备份与存档使用，不代表或管理 X 平台上的任何账号，也不保证归档资料持续准确、完整或实时。请遵守当地法律法规、X 平台规则及内容版权要求。
 
