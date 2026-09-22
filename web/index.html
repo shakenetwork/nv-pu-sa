@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>女菩萨 · X 博主精选画廊</title>
+<meta name="description" content="高品质 X (Twitter) 创作者精选画廊 · 去重备份 · 实时探索与智能推荐。公开资料的技术性归档与索引系统。" />
+<link rel="icon" type="image/png" href="assets/logo-icon.png" />
+
+  <!-- Modern Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#gallery">跳到主要内容</a>
+
+    <!-- Top Sticky Header (Slim & Purified) -->
+    <header class="v2-header">
+      <div class="header-inner">
+        
+        <!-- Brand identity (No shake / head-tilt animation, purified brand) -->
+        <div class="header-brand-group">
+          <a href="/" class="brand-link">
+            <div class="brand-avatar">
+              <img src="assets/logo-icon.png" alt="女菩萨" class="brand-img" onerror="this.style.display='none'">
+            </div>
+            <div class="brand-text">
+              <span class="brand-name">女菩萨</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Global Search Bar -->
+        <div class="header-search-wrap">
+          <div class="search-box">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="global-search" placeholder="搜索博主 ID (@handle)、昵称或简介 Bio..." autocomplete="off" spellcheck="false" aria-label="搜索博主">
+            <button id="search-clear-btn" class="search-clear-btn hidden" title="清空搜索 (ESC)" aria-label="清空搜索">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <kbd class="key-shortcut" title="按 '/' 键快速聚焦">/</kbd>
+          </div>
+        </div>
+
+        <!-- Right Quick Controls -->
+        <div class="header-actions">
+          
+          <!-- Random Discovery Roulette Button (React-Bits Slot Machine) -->
+          <button class="btn-lucky-pick" id="btn-lucky-pick" title="随机探索一位博主 (快捷键: R)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="12" height="12" x="2" y="10" rx="2" ry="2"/>
+              <path d="m17.92 14 3.5-3.5a2.41 2.41 0 0 0 0-3.41l-4.5-4.5a2.41 2.41 0 0 0-3.41 0L10 6.08"/>
+              <path d="M6 14h.01"/><path d="M10 18h.01"/><path d="M15 10h.01"/>
+            </svg>
+            <span>随机探索</span>
+          </button>
+
+          <!-- Pure Icon Dual Theme Toggle Button (Light vs OLED) -->
+          <button class="theme-toggle-btn" id="theme-btn" title="切换主题 (Light / OLED) [快捷键: T]" aria-label="切换主题">
+            <svg id="theme-icon-sun" class="hidden" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+            <svg id="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+          </button>
+
+          <!-- Admin Console Gate -->
+          <a href="console.html" class="btn-nav-pill" title="进入管理控制台">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span>控制台</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+<!-- ============ MAIN ============ -->
+<main class="site-main">
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="hero-grid">
+    <div class="hero-left">
+    <p class="eyebrow"><span class="star">☆</span> CURATED DISCOVERY VAULT</p>
+    <h1 id="heroTitle" class="hero-title"><span class="shiny-text">X 博主精选画廊</span></h1>
+    <p class="hero-sub">高品质 X (Twitter) 创作者画廊 · 去重备份 · 实时探索与智能推荐</p>
+
+    <a class="curator-chip" href="https://x.com/TianZe68356" target="_blank" rel="noopener noreferrer"
+       title="前往 X 访问策展人 Wet Dream Boy (@TianZe68356)">
+      <span class="curator-label">策展人</span>
+      <span class="curator-dot">·</span>
+      <span class="curator-name">Wet Dream Boy</span>
+      <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
+
+    <div class="stats-bar" role="group" aria-label="归档统计">
+      <div class="stat">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div class="stat-body"><span class="stat-num" id="statTotal">0</span><span class="stat-label">归档总数</span></div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
+        <div class="stat-body"><span class="stat-num" id="statVerified">0%</span><span class="stat-label">蓝标认证</span></div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+        <div class="stat-body"><span class="stat-num" id="statMax">0</span><span class="stat-label">最高粉丝</span></div>
+      </div>
+    </div>
+
+    </div>
+
+    <!-- SPOTLIGHT -->
+    <div class="hero-right-spotlight" id="hero-spotlight-card">
+      <div class="spotlight-badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        <span class="shiny-gold">今日精选 Spotlight</span>
+      </div>
+
+      <div class="spotlight-body" id="spotlight-dynamic-content"></div>
+
+      <button class="btn-shuffle-spotlight" id="btn-shuffle-spotlight" title="换一个精选推荐">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+        <span>换一位推荐</span>
+      </button>
+    </div>
+    </div>
+  </section>
+
+  <!-- TOOLBAR -->
+  <section class="toolbar" id="gallery">
+    <div class="filters" id="filters" role="tablist" aria-label="筛选"></div>
+    <div class="toolbar-right">
+      <div class="view-toggle" id="viewToggle" role="group" aria-label="视图切换">
+        <button class="view-btn is-active" data-view="grid" title="自适应瀑布流 (快捷键: 1)" aria-label="自适应瀑布流视图">
+          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 4h7v9H4zM13 4h7v5h-7zM4 15h7v5H4zM13 11h7v9h-7z"/></svg>
+        </button>
+        <button class="view-btn" data-view="compact" title="密集紧凑 (快捷键: 2)" aria-label="密集紧凑视图">
+          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
+        </button>
+        <button class="view-btn" data-view="list" title="数据列表 (快捷键: 3)" aria-label="数据列表视图">
+          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="result-bar">
+    <span id="resultCount" class="result-count">共呈现 0 位博主归档</span>
+    <div class="sort-wrap">
+      <label class="sort-label" for="sortSelect">排序</label>
+      <select id="sortSelect" class="sort-select" aria-label="排序方式">
+        <option value="followers_desc">粉丝数从高到低</option>
+        <option value="followers_asc">粉丝数从低到高</option>
+        <option value="clicks_desc">热度最高</option>
+        <option value="recent_desc">最新归档</option>
+        <option value="name_asc">名称 A → Z</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- GALLERY GRID -->
+  <div id="grid" class="blogger-wall grid-view"></div>
+
+  <div id="sentinel" class="sentinel" aria-hidden="true"></div>
+  <p id="loadMore" class="load-more">加载更多博主中...</p>
+  <p id="emptyState" class="empty-state" hidden>没有匹配的博主归档，试试更换筛选或关键词。</p>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <span class="footer-brand">女菩萨</span>
+    <span class="footer-sep">·</span>
+    <span class="footer-mono">X-Archive Curation Vault</span>
+    <span class="footer-sep">·</span>
+    <a class="footer-link" href="console.html">数据控制台</a>
+  </div>
+  <div class="footer-keys">
+    <span class="key-hint"><kbd>/</kbd> 搜索</span>
+    <span class="key-hint"><kbd>R</kbd> 抽卡</span>
+    <span class="key-hint"><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> 视图</span>
+    <span class="key-hint"><kbd>T</kbd> 主题</span>
+  </div>
+  <p class="disclaimer">免责声明：本站仅为社交网络公开资料的技术性归档与索引系统，不存储、不分发任何第三方多媒体资源。点击链接将直接跳转至创作者官方平台，所有内容版权及言论由原作者与第三方平台自行负责。</p>
+</footer>
+
+<button id="backTop" class="back-top" aria-label="回到页面顶部" title="回到顶部 (快捷键: Home)">
+  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<!-- ============ ROULETTE MODAL (original: Impeccable Frameless Floating Single Card Random Discovery Modal — React-Bits Slot Machine) ============ -->
+    <div class="roulette-backdrop hidden" id="random-roulette-backdrop">
+      <div class="roulette-frameless-wrapper">
+        
+        <!-- Single Pure Card (No outer white container or headers) -->
+        <div class="roulette-floating-card" id="roulette-card-container">
+          <div class="roulette-banner" id="roulette-banner" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80');"></div>
+          
+          <div class="roulette-avatar-zone">
+            <div style="position: relative; overflow: visible;">
+              <img id="roulette-avatar" class="roulette-avatar-img" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="Avatar">
+              <span id="roulette-verified" class="badge-verified-native" style="bottom: 0; right: 0;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+            <span id="roulette-tag" class="card-influence-pill top-tier">Top Creator</span>
+          </div>
+
+          <div class="roulette-info-zone">
+            <div class="roulette-name-row">
+              <span id="roulette-name" class="roulette-name">博主昵称</span>
+            </div>
+            <span id="roulette-handle" class="roulette-handle">@handle · 0 关注者</span>
+            <div id="roulette-bio" class="roulette-bio">博主简介信息正在流转...</div>
+          </div>
+        </div>
+
+        <!-- Pure Bottom Action Buttons (Hidden during shuffling, revealed upon settle) -->
+        <div class="roulette-outside-actions" id="roulette-outside-actions">
+          <a class="btn-roulette-visit" id="btn-roulette-visit" href="https://x.com" target="_blank">
+            <span>直达 X 个人主页</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <button class="btn-reshuffle" id="btn-reshuffle-again">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+            <span>再抽一次 (按 R)</span>
+          </button>
+        </div>
+
+        <div class="roulette-dismiss-hint" id="roulette-dismiss-hint">按 ESC 或点击任意空白处关闭</div>
+
+      </div>
+    </div>
+
+<!-- Blogger Inspector Detail Drawer (Manual card inspector) -->
+<div class="inspector-backdrop hidden" id="inspector-backdrop">
+  <aside class="inspector-drawer" id="inspector-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-user-name">
+    <div class="drawer-header">
+      <div class="drawer-title-group">
+        <span class="drawer-badge-tag" id="drawer-badge-tag">博主档案</span>
+        <span class="drawer-meta-tip">按 ESC 关闭</span>
+      </div>
+      <button class="drawer-close-btn" id="drawer-close-btn" title="关闭 (ESC)" aria-label="关闭详情">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    
+    <div class="drawer-body" id="drawer-body-content">
+      <!-- Populated dynamically by JS -->
+    </div>
+  </aside>
+</div>
+
+<!-- Floating Toast Notification -->
+<div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

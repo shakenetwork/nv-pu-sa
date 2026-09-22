@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>数据控制台 · 女菩萨</title>
+<link rel="icon" type="image/png" href="assets/logo-icon.png" />
+
+  <!-- Modern Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .admin-wrap{max-width:var(--maxw);margin:0 auto;padding:24px 20px 60px}
+  .admin-head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+  .admin-head h1{font-size:22px;margin:0;font-weight:900}
+  .admin-back{margin-left:auto;font-size:13px;color:var(--cyan)}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:22px}
+  .kpi{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 18px}
+  .kpi-v{font-family:var(--font-mono);font-size:26px;font-weight:800;color:var(--cyan)}
+  .kpi-k{font-size:12.5px;color:var(--text-mute);margin-top:4px}
+  .admin-tools{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+  .admin-tools .search-input{max-width:320px}
+  table.data{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;font-size:13px}
+  table.data th,table.data td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+  table.data th{color:var(--text-mute);font-weight:600;font-size:12px;cursor:pointer;user-select:none;white-space:nowrap;background:var(--surface-2)}
+  table.data td.mono{font-family:var(--font-mono);color:var(--cyan)}
+  table.data tr:hover td{background:var(--card-hover)}
+  .tag{font-size:11px;padding:1px 7px;border-radius:999px;border:1px solid var(--border)}
+  .tag.v{color:var(--verified);border-color:var(--verified)}
+  .tag.dead{color:#f87171;border-color:#f87171}
+  .admin-note{font-size:12px;color:var(--text-mute);margin-top:14px;line-height:1.6}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner admin-header-inner">
+    <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-icon.png" alt="女菩萨" width="34" height="26"><span class="brand-name">女菩萨</span></a>
+    <div class="header-actions" style="margin-left:auto">
+      <button id="themeBtn" class="btn-icon" aria-label="切换主题" title="切换主题">
+        <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg>
+      </button>
+      <a class="btn" href="index.html">返回画廊</a>
+    </div>
+  </div>
+</header>
+
+<div class="admin-wrap">
+  <div class="admin-head">
+    <h1>数据控制台</h1>
+    <span class="footer-mono">X-Archive Curation Vault</span>
+    <a class="admin-back" href="index.html">← 返回画廊</a>
+  </div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="admin-tools">
+    <input id="q" class="search-input" type="search" placeholder="搜索 @handle / 昵称 / 简介...">
+    <span id="rows" class="result-count"></span>
+  </div>
+
+  <table class="data">
+    <thead><tr>
+      <th data-k="screen_name">Handle</th>
+      <th data-k="name">昵称</th>
+      <th data-k="followers_count">粉丝</th>
+      <th data-k="verified">认证</th>
+      <th data-k="total_clicks">热度</th>
+      <th data-k="backed_up_at">归档日</th>
+      <th data-k="status">状态</th>
+    </tr></thead>
+    <tbody id="tb"></tbody>
+  </table>
+  <p class="admin-note">本控制台为只读数据视图，展示 <code>archive.json</code> 归档内容。生产环境的写入、去重与媒体同步由后端服务处理。</p>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  const A=window.__ARCHIVE||[];
+  const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const compact=n=>{n=Number(n)||0;return n>=1e6?(n/1e6).toFixed(1)+"M":n>=1e3?(n/1e3).toFixed(1)+"K":String(n)};
+  const dstr=x=>{const d=new Date(x);return isNaN(d)?"—":d.toISOString().slice(0,10)};
+  function applyTheme(t){document.documentElement.setAttribute("data-theme",t);localStorage.setItem("np.theme",t)}
+  applyTheme(localStorage.getItem("np.theme")||"dark");
+  document.getElementById("themeBtn").onclick=()=>applyTheme(document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark");
+
+  const total=A.length;
+  const ver=A.filter(r=>Number(r.verified)===1).length;
+  const dead=A.filter(r=>Number(r.is_blocked)===1||Number(r.is_suspended)===1).length;
+  const maxf=A.reduce((m,r)=>Math.max(m,Number(r.followers_count)||0),0);
+  const clicks=A.reduce((m,r)=>m+(Number(r.total_clicks)||0),0);
+  const kpis=[["归档总数",total],["蓝标认证",Math.round(ver/total*100)+"%"],["失效账号",dead],["最高粉丝",compact(maxf)],["累计跳转",compact(clicks)]];
+  document.getElementById("kpis").innerHTML=kpis.map(k=>`<div class="kpi"><div class="kpi-v">${k[1]}</div><div class="kpi-k">${k[0]}</div></div>`).join("");
+
+  let sortK="followers_count",sortDir=-1,q="";
+  const tb=document.getElementById("tb");
+  function render(){
+    let rows=A.filter(r=>{if(!q)return true;const s=(r.screen_name+" "+r.name+" "+(r.description||"")).toLowerCase();return s.includes(q)});
+    rows.sort((a,b)=>{let x=a[sortK],y=b[sortK];if(sortK==="status"){x=(Number(a.is_blocked)||Number(a.is_suspended));y=(Number(b.is_blocked)||Number(b.is_suspended))}if(typeof x==="string")return String(x).localeCompare(String(y))*sortDir;return((Number(x)||0)-(Number(y)||0))*sortDir});
+    document.getElementById("rows").textContent="显示 "+rows.length+" / "+total+" 条";
+    tb.innerHTML=rows.slice(0,300).map(r=>{
+      const isDead=Number(r.is_blocked)===1||Number(r.is_suspended)===1;
+      return `<tr><td class="mono">@${esc(r.screen_name)}</td><td>${esc(r.name)}</td><td>${compact(r.followers_count)}</td>
+      <td>${Number(r.verified)===1?'<span class="tag v">蓝标</span>':'—'}</td><td>${Number(r.total_clicks)||0}</td><td>${dstr(r.backed_up_at)}</td>
+      <td>${isDead?'<span class="tag dead">失效</span>':'正常'}</td></tr>`}).join("");
+  }
+  document.querySelectorAll("table.data th").forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(sortK===k)sortDir*=-1;else{sortK=k;sortDir=-1}render()});
+  document.getElementById("q").addEventListener("input",e=>{q=e.target.value.toLowerCase();render()});
+  render();
+})();
+</script>
+</body>
+</html>
